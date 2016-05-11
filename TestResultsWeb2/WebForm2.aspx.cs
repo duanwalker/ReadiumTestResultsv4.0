@@ -16,8 +16,9 @@ namespace TestResultsWeb2
         protected void Page_Load(object sender, EventArgs e)
         {
             string connectionString = "";
+            string getExcelSheetName = "";
             //get array of files from App_Data folder
-            string[] files = Directory.GetFiles(Server.MapPath("~/App_Data/" ));
+            string[] files = Directory.GetFiles("C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" );
             if (files.Length == 0)
             {
                 Response.Write("no files in folder");
@@ -35,36 +36,55 @@ namespace TestResultsWeb2
                 dtExcelRecords.Columns.Add("Browser");
                 dtExcelRecords.Columns.Add("Score");
 
+
                 //loop through each file in App_Data and parse data, thereby populating gridview1
                 foreach (string fileName in files)
                 {
-                  //  Response.Write(fileName);
-                    string fileExtension = Path.GetExtension(Server.MapPath("~/App_Data/" + fileName));
-                    string fileLocation = Server.MapPath("~/App_Data/" + fileName);
+                    //  Response.Write(fileName);
+                    string fileExtension = Path.GetExtension("C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" + fileName);
+                    string fileLocation = "C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" + fileName;
 
                     if (fileExtension == ".xls")
                     {
                         connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                      fileLocation + ";Extended Properties=\"Excel 8.0;HDR=Yes;IMEX=2\"";
+                      fileName + ";Extended Properties=\"Excel 8.0;HDR=Yes;IMEX=2\"";
                     }
                     else if (fileExtension == ".xlsx")
                     {
                         connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +
-                      fileLocation + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
+                      fileName + ";Extended Properties=\"Excel 12.0;HDR=No;IMEX=2\"";
                     }
 
-                }
-                //establish connection to excel
-                OleDbConnection con = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Connection = con;
-                OleDbDataAdapter dAdapter = new OleDbDataAdapter(cmd);
-               
-                
 
+                    //establish connection to excel
+                    OleDbConnection con = new OleDbConnection(connectionString);
+                    OleDbCommand cmd = new OleDbCommand();
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection = con;
+                    OleDbDataAdapter dAdapter = new OleDbDataAdapter(cmd);
+
+                    try
+                    {
+                        con.Open();
+                        DataTable dtExcelSheetName = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+                        getExcelSheetName = dtExcelSheetName.Rows[0]["Table_Name"].ToString();
+
+                        cmd.CommandText = "SELECT * FROM [" + getExcelSheetName + "]";
+                 //       dAdapter.SelectCommand = cmd;
+                        dAdapter.Fill(dtExcelRecords);
+                        
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("{0} Exception caught.", ex);
+                    }
+
+                    GridView1.DataSource = dtExcelRecords;
+                    GridView1.DataBind();
+                }
             }
-           
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)

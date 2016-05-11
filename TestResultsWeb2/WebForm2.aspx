@@ -31,6 +31,16 @@ link to download the Excel spreadsheet.
             Width="92px" OnClick="btnUpload_Click" />
 
         <asp:GridView ID="GridView1" runat="server">
+            <%-- <Columns>
+                         <asp:BoundField DataField="Tester" HeaderText="Tester" />
+                         <asp:BoundField DataField="Date" HeaderText="Date" />
+                         <asp:BoundField DataField="CR Version" HeaderText="CR Version" />
+                         <asp:BoundField DataField="Device" HeaderText="Device" />
+                         <asp:BoundField DataField="OS" HeaderText="OS" />
+                         <asp:BoundField DataField="Locale" HeaderText="Locale" />
+                         <asp:BoundField DataField="Browser" HeaderText="Browser" />
+                         <asp:BoundField DataField="Score" HeaderText="Score" />
+                    </Columns>--%>
         </asp:GridView>
     </div>
     </div>
