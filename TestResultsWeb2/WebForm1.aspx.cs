@@ -29,6 +29,7 @@ namespace TestResultsWeb2
                 string fileExtension = Path.GetExtension(FileUpload1.PostedFile.FileName);
                 string fileLocation = Server.MapPath("~/App_Data/" + fileName);
                 FileUpload1.SaveAs(fileLocation);
+              //  Response.Write("File: " + fileName + " has been uploaded.");
                 if (fileExtension == ".xls")
                 {
                     connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
@@ -54,31 +55,20 @@ namespace TestResultsWeb2
                 //dtExcelRecords.Columns.Add("Browser");
                 //dtExcelRecords.Columns.Add("Score");
                 
-               
+      //for loop through each file in App_Data folder and run this below         
                 try
                 {
                     con.Open();
                     DataTable dtExcelSheetName = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
                     getExcelSheetName = dtExcelSheetName.Rows[0]["Table_Name"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("{0} Exception caught.", ex);
-                }
+               
                 cmd.CommandText = "SELECT * FROM [" + getExcelSheetName + "]";
                 dAdapter.SelectCommand = cmd;
-                try
-                {
+           
                     dAdapter.Fill(dtExcelRecords);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("{0} Exception caught.", ex);
-                }
-
-                try
-                {
+             
+                  
                     string tester = dtExcelRecords.Rows[4][3].ToString();
                     Response.Write(tester);
                     string date = dtExcelRecords.Rows[7][3].ToString();
@@ -96,13 +86,14 @@ namespace TestResultsWeb2
                     string score = dtExcelRecords.Rows[37][2].ToString();
                     Response.Write(score);
 
+                    con.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("{0} Exception caught.", ex);
                 }
 
-                con.Close();
+                
 
                 GridView1.DataSource = dtExcelRecords;
                 GridView1.DataBind();

@@ -4,3 +4,9 @@ C:\Users\Duan\Documents\GitHub\ReadiumTestResultsApp_v4\TestResultsWeb2\bin\Test
 C:\Users\Duan\Documents\GitHub\ReadiumTestResultsApp_v4\TestResultsWeb2\obj\Debug\TestResultsWeb2.csprojResolveAssemblyReference.cache
 C:\Users\Duan\Documents\GitHub\ReadiumTestResultsApp_v4\TestResultsWeb2\obj\Debug\TestResultsWeb2.dll
 C:\Users\Duan\Documents\GitHub\ReadiumTestResultsApp_v4\TestResultsWeb2\obj\Debug\TestResultsWeb2.pdb
+C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\bin\TestResultsWeb2.dll.config
+C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\bin\TestResultsWeb2.dll
+C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\bin\TestResultsWeb2.pdb
+C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\obj\Debug\TestResultsWeb2.csprojResolveAssemblyReference.cache
+C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\obj\Debug\TestResultsWeb2.dll
+C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\obj\Debug\TestResultsWeb2.pdb
