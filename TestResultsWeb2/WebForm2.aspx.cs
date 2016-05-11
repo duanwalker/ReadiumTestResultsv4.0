@@ -71,7 +71,7 @@ namespace TestResultsWeb2
                         getExcelSheetName = dtExcelSheetName.Rows[0]["Table_Name"].ToString();
 
                         cmd.CommandText = "SELECT * FROM [" + getExcelSheetName + "]";
-                 //       dAdapter.SelectCommand = cmd;
+                        dAdapter.SelectCommand = cmd;
                         dAdapter.Fill(dtExcelRecords);
                         
                         con.Close();

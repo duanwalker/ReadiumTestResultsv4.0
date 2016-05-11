@@ -30,8 +30,8 @@ link to download the Excel spreadsheet.
             Height="21px" Text="Submit"
             Width="92px" OnClick="btnUpload_Click" />
 
-        <asp:GridView ID="GridView1" runat="server">
-            <%-- <Columns>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false">
+             <Columns>
                          <asp:BoundField DataField="Tester" HeaderText="Tester" />
                          <asp:BoundField DataField="Date" HeaderText="Date" />
                          <asp:BoundField DataField="CR Version" HeaderText="CR Version" />
@@ -40,7 +40,7 @@ link to download the Excel spreadsheet.
                          <asp:BoundField DataField="Locale" HeaderText="Locale" />
                          <asp:BoundField DataField="Browser" HeaderText="Browser" />
                          <asp:BoundField DataField="Score" HeaderText="Score" />
-                    </Columns>--%>
+                    </Columns>
         </asp:GridView>
     </div>
     </div>
