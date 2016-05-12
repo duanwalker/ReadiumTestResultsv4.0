@@ -18,7 +18,7 @@ namespace TestResultsWeb2
             string connectionString = "";
             string getExcelSheetName = "";
             //get array of files from App_Data folder
-            string[] files = Directory.GetFiles("C://Users/Duan/Documents/ReadiumTestResultsv4.0/TestResultsWeb2/App_Data" );
+            string[] files = Directory.GetFiles("C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" );
             if (files.Length == 0)
             {
                 Response.Write("no files in folder");
@@ -41,8 +41,8 @@ namespace TestResultsWeb2
                 foreach (string fileName in files)
                 {
                     //  Response.Write(fileName);
-                    string fileExtension = Path.GetExtension("C://Users/Duan/Documents/ReadiumTestResultsv4.0/TestResultsWeb2/App_Data" + fileName);
-                    string fileLocation = "C://Users/Duan/Documents/ReadiumTestResultsv4.0/TestResultsWeb2/App_Data" + fileName;
+                    string fileExtension = Path.GetExtension("C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" + fileName);
+                    string fileLocation = "C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" + fileName;
 
                     if (fileExtension == ".xls")
                     {
