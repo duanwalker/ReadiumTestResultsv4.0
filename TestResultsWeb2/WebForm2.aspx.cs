@@ -73,6 +73,28 @@ namespace TestResultsWeb2
                         cmd.CommandText = "SELECT * FROM [" + getExcelSheetName + "]";
                         dAdapter.SelectCommand = cmd;
                         dAdapter.Fill(dtExcelRecords);
+
+                        string tester = dtExcelRecords.Rows[4][3].ToString();
+                    //    Response.Write(tester);
+                        string date = dtExcelRecords.Rows[7][3].ToString();
+                      //  Response.Write(date);
+                        string crVersion = dtExcelRecords.Rows[9][3].ToString();
+                     //   Response.Write(crVersion);
+                        string device = dtExcelRecords.Rows[16][3].ToString();
+                     //   Response.Write(device);
+                        string os = dtExcelRecords.Rows[18][3].ToString();
+                    //    Response.Write(os);
+                        string locale = dtExcelRecords.Rows[19][3].ToString();
+                     //   Response.Write(locale);
+                        string browser = dtExcelRecords.Rows[20][3].ToString();
+                     //   Response.Write(browser);
+                        string score = dtExcelRecords.Rows[37][2].ToString();
+                   //     Response.Write(score);
+                        string test = "this is a test string";
+
+                        string[] row = new string[] { test, date, crVersion,device,os,locale,browser,score };
+                        dtExcelRecords.Rows.Add(row);
+
                         
                         con.Close();
                     }
