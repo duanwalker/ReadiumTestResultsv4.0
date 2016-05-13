@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,7 +20,30 @@ namespace TestResultsWeb2
             string connectionString = "";
             string getExcelSheetName = "";
             //get array of files from App_Data folder
-            string[] files = Directory.GetFiles("C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" );
+            //string url = "http://readium.github.io/test-results/cloudreader/spreadsheets";
+
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            //{
+            //    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+            //    {
+            //        string html = reader.ReadToEnd();
+            //        Regex regex = new Regex(GetDirectoryListingRegexForUrl(url));
+            //        MatchCollection matches = regex.Matches(html);
+            //        if (matches.Count > 0)
+            //        {
+            //            foreach (Match match in matches)
+            //            {
+            //                if (match.Success)
+            //                {
+            //                    Console.WriteLine(match.Groups["name"]);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            string[] files = Directory.GetFiles(@"C:\Users\walkd\Documents\GitHub\ReadiumTestResults_v4.0\TestResultsWeb2\App_Data");
             if (files.Length == 0)
             {
                 Response.Write("no files in folder");
@@ -26,6 +51,7 @@ namespace TestResultsWeb2
             else
             {
                 //create datatable and header columns for datatable
+                DataTable dtExcelFileRecords = new DataTable();
                 DataTable dtExcelRecords = new DataTable();
                 dtExcelRecords.Columns.Add("Tester");
                 dtExcelRecords.Columns.Add("Date");
@@ -62,6 +88,7 @@ namespace TestResultsWeb2
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection = con;
                     OleDbDataAdapter dAdapter = new OleDbDataAdapter(cmd);
+                    DataTable dt = new DataTable();
 
                     try
                     {
@@ -72,30 +99,23 @@ namespace TestResultsWeb2
 
                         cmd.CommandText = "SELECT * FROM [" + getExcelSheetName + "]";
                         dAdapter.SelectCommand = cmd;
-                        dAdapter.Fill(dtExcelRecords);
+                        dtExcelFileRecords.Clear();
+                        dAdapter.Fill(dtExcelFileRecords);
 
-                        string tester = dtExcelRecords.Rows[4][3].ToString();
-                    //    Response.Write(tester);
-                        string date = dtExcelRecords.Rows[7][3].ToString();
-                      //  Response.Write(date);
-                        string crVersion = dtExcelRecords.Rows[9][3].ToString();
-                     //   Response.Write(crVersion);
-                        string device = dtExcelRecords.Rows[16][3].ToString();
-                     //   Response.Write(device);
-                        string os = dtExcelRecords.Rows[18][3].ToString();
-                    //    Response.Write(os);
-                        string locale = dtExcelRecords.Rows[19][3].ToString();
-                     //   Response.Write(locale);
-                        string browser = dtExcelRecords.Rows[20][3].ToString();
-                     //   Response.Write(browser);
-                        string score = dtExcelRecords.Rows[37][2].ToString();
-                   //     Response.Write(score);
-                        string test = "this is a test string";
+                        string tester = dtExcelFileRecords.Rows[5][3].ToString();
+                        string date = dtExcelFileRecords.Rows[8][3].ToString();
+                        string crVersion = dtExcelFileRecords.Rows[10][3].ToString();
+                        string device = dtExcelFileRecords.Rows[17][3].ToString();
+                        string os = dtExcelFileRecords.Rows[19][3].ToString();
+                        string locale = dtExcelFileRecords.Rows[20][3].ToString();
+                        string browser = dtExcelFileRecords.Rows[21][3].ToString();
+                        string score = dtExcelFileRecords.Rows[38][2].ToString();
 
-                        string[] row = new string[] { test, date, crVersion,device,os,locale,browser,score };
+                        //score = "http://msn.com";
+
+                        string[] row = new string[] { tester, date, crVersion, device, os, locale, browser, score };
                         dtExcelRecords.Rows.Add(row);
 
-                        
                         con.Close();
                     }
                     catch (Exception ex)
