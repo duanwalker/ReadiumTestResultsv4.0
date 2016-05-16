@@ -15,7 +15,9 @@ namespace TestResultsWeb2
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        string fileName;
+
+        public void Page_Load(object sender, EventArgs e)
         {
             string connectionString = "";
             string getExcelSheetName = "";
@@ -61,6 +63,7 @@ namespace TestResultsWeb2
                 dtExcelRecords.Columns.Add("Locale");
                 dtExcelRecords.Columns.Add("Browser");
                 dtExcelRecords.Columns.Add("Score");
+                dtExcelRecords.Columns.Add("View");
 
 
                 //loop through each file in App_Data and parse data, thereby populating gridview1
@@ -68,6 +71,7 @@ namespace TestResultsWeb2
                 {
                     //  Response.Write(fileName);
                     string fileExtension = Path.GetExtension("C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" + fileName);
+                    string fName = Path.GetFileName(fileName);
                     string fileLocation = "C:\\Users/walkd/Documents/GitHub/ReadiumTestResults_v4.0/TestResultsWeb2/App_Data" + fileName;
 
                     if (fileExtension == ".xls")
@@ -111,9 +115,10 @@ namespace TestResultsWeb2
                         string browser = dtExcelFileRecords.Rows[21][3].ToString();
                         string score = dtExcelFileRecords.Rows[38][2].ToString();
 
-                        //score = "http://msn.com";
+                        string link = "http://readium.github.io/test-results/cloudreader/spreadsheets/spreadsheets/" + fName;
+                       // string link2 = dtExcelFileRecords;
 
-                        string[] row = new string[] { tester, date, crVersion, device, os, locale, browser, score };
+                        string[] row = new string[] { tester, date, crVersion, device, os, locale, browser, score,link };
                         dtExcelRecords.Rows.Add(row);
 
                         con.Close();
@@ -128,7 +133,20 @@ namespace TestResultsWeb2
                 }
             }
         }
+        /// <summary>
+        /// Handles the RowDataBound event of the grdStudent control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Web.UI.WebControls.GridViewRowEventArgs"/> instance containing the event data.</param>
+        //public void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
 
+        //        HyperLink hl = (HyperLink)e.Row.FindControl("HyperLink2");
+        //        hl.NavigateUrl = "http://readium.github.io/test-results/cloudreader/spreadsheets/spreadsheets/" + this.fileName;
+        //    }
+        //}
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             if (FileUpload1.HasFile)
