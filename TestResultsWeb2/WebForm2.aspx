@@ -46,8 +46,8 @@ link to download the Excel spreadsheet.
                          <asp:BoundField DataField="Locale" HeaderText="Locale" />
                          <asp:BoundField DataField="Browser" HeaderText="Browser" />
                         <%-- <asp:BoundField DataField="Score" HeaderText="Score" />--%>
-                 <asp:HyperLinkField DataTextField="score" DataTextFormatString="{0:g}" HeaderText="Score" datanavigateurlfields="" DataNavigateUrlFormatString="http://readium.github.io/test-results/cloudreader/spreadsheets/spreadsheets/{0}" Target="_new" />
-                        <asp:BoundField DataField="view" HeaderText="View Results" DataFormatString="{0:g}"  />
+                        <asp:HyperLinkField DataTextField="score" DataTextFormatString="{0:g}" HeaderText="Score" datanavigateurlfields="device" DataNavigateUrlFormatString="#" Target="_new" />
+                        <asp:BoundField DataField="view" HeaderText="View Results" DataFormatString="{0:g}" />
                  
 
                  <%--<asp:TemplateField HeaderText="View Results"  >
