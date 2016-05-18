@@ -115,12 +115,8 @@ namespace TestResultsWeb2
                         string locale = dtExcelFileRecords.Rows[20][3].ToString();
                         string browser = dtExcelFileRecords.Rows[21][3].ToString();
                         string score = dtExcelFileRecords.Rows[38][2].ToString();
-                       // HyperLinkField link = new HyperLinkField();
-                       ////  link.DataNavigateUrlFormatString = ("http://readium.github.io/test-results/cloudreader/spreadsheets/spreadsheets/" + fName).ToString();
-                       //  link.DataTextField = dtExcelFileRecords.Rows[38][2].ToString();
-                      
                         string link = ("http://readium.github.io/test-results/cloudreader/spreadsheets/spreadsheets/" + fName).ToString();
-                       
+
                         string[] row = new string[] { tester, date, crVersion, device, os, locale, browser, score, link };
                         dtExcelRecords.Rows.Add(row);
 
@@ -146,8 +142,8 @@ namespace TestResultsWeb2
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
-                HyperLink link = new HyperLink();
-                link.Text = "This is a link!";
+                HyperLink link = (HyperLink)e.Row.FindControl("hl");
+                link.Text = "Download!";
                 link.NavigateUrl = "http://readium.github.io/test-results/cloudreader/spreadsheets/spreadsheets/" + e.Row.DataItem;
                 e.Row.Cells[0].Controls.Add(link);
                 GridView1.Controls.Add(link);

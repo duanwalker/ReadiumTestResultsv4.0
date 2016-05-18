@@ -36,36 +36,33 @@ link to download the Excel spreadsheet.
         <br/>
         <hr />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-             <AlternatingRowStyle BackColor="White" />
-             <Columns>
-                         <asp:BoundField DataField="Tester" HeaderText="Tester" />
-                         <asp:BoundField DataField="Date" HeaderText="Date" />
-                         <asp:BoundField DataField="CR Version" HeaderText="CR Version" />
-                         <asp:BoundField DataField="Device" HeaderText="Device" />
-                         <asp:BoundField DataField="OS" HeaderText="OS" />
-                         <asp:BoundField DataField="Locale" HeaderText="Locale" />
-                         <asp:BoundField DataField="Browser" HeaderText="Browser" />
-                        <%-- <asp:BoundField DataField="Score" HeaderText="Score" />--%>
-                        <asp:HyperLinkField DataTextField="score" DataTextFormatString="{0:g}" HeaderText="Score" datanavigateurlfields="device" DataNavigateUrlFormatString="#" Target="_new" />
-                        <asp:BoundField DataField="view" HeaderText="View Results" DataFormatString="{0:g}" />
-                 
-
-                 <%--<asp:TemplateField HeaderText="View Results"  >
-                     <ItemTemplate>
-                         <asp:HyperLink ID="HyperLink2" runat="server"   />
-                     </ItemTemplate>
-                 </asp:TemplateField>--%>
-                    </Columns>
-             <EditRowStyle BackColor="#7C6F57" />
-             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-             <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-             <RowStyle BackColor="#E3EAEB" />
-             <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-             <SortedAscendingCellStyle BackColor="#F8FAFA" />
-             <SortedAscendingHeaderStyle BackColor="#246B61" />
-             <SortedDescendingCellStyle BackColor="#D4DFE1" />
-             <SortedDescendingHeaderStyle BackColor="#15524A" />
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="Tester" HeaderText="Tester" />
+                <asp:BoundField DataField="Date" HeaderText="Date" />
+                <asp:BoundField DataField="CR Version" HeaderText="CR Version" />
+                <asp:BoundField DataField="Device" HeaderText="Device" />
+                <asp:BoundField DataField="OS" HeaderText="OS" />
+                <asp:BoundField DataField="Locale" HeaderText="Locale" />
+                <asp:BoundField DataField="Browser" HeaderText="Browser" />
+                <asp:BoundField DataField="Score" HeaderText="Score" />
+                <asp:TemplateField HeaderText="View Results">
+                    <ItemTemplate>
+                        <a id="hl" href='<%#Eval("view") %>' target="_blank">Download</a>
+                        <%--<asp:Label ID="Label1" runat="server" Text='<%# Bind("view", "{0:g}") %>'></asp:Label>--%>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BackColor="#7C6F57" />
+            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#E3EAEB" />
+            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+            <SortedAscendingHeaderStyle BackColor="#246B61" />
+            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+            <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
     </div>
     </div>
