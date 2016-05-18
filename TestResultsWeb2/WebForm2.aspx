@@ -20,19 +20,18 @@
             <h1>CloudReader Results</h1>
             <p>
                 This page contains the results from testing of the Readium
-CloudReader across a large number of browsers and platforms. The score
-in each row is linked to the actual spreadsheet, so just click on the
+CloudReader and Readium Chrome Extension across a large number of browsers and platforms. To download the individual test results, just click on the "Download"
 link to download the Excel spreadsheet.
             </p>
         </div>
     </div>
     <div>
-        <asp:FileUpload ID="FileUpload1" runat="server" />
+        <%--<asp:FileUpload ID="FileUpload1" runat="server" />
         <br/>
  
         <asp:Button ID="btnUpload" runat="server"
             Height="21px" Text="Submit"
-            Width="92px" OnClick="btnUpload_Click" />
+            Width="92px" OnClick="btnUpload_Click" />--%>
         <br/>
         <hr />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
