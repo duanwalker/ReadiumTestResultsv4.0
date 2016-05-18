@@ -45,7 +45,7 @@ link to download the Excel spreadsheet.
                 <asp:BoundField DataField="Locale" HeaderText="Locale" />
                 <asp:BoundField DataField="Browser" HeaderText="Browser" />
                 <asp:BoundField DataField="Score" HeaderText="Score" />
-                <asp:TemplateField HeaderText="View Results">
+                <asp:TemplateField HeaderText="View">
                     <ItemTemplate>
                         <a id="hl" href='<%#Eval("view") %>' target="_blank">Download</a>
                         <%--<asp:Label ID="Label1" runat="server" Text='<%# Bind("view", "{0:g}") %>'></asp:Label>--%>

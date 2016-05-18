@@ -79,23 +79,7 @@ namespace TestResultsWeb2
                         dtExcelFileRecords.Clear();
                         dAdapter.Fill(dtExcelFileRecords);
 
-                        if (dtExcelFileRecords.Rows[16][3].ToString() == " ")
-                        {
-                            string tester = dtExcelFileRecords.Rows[5][3].ToString();
-                            string date = dtExcelFileRecords.Rows[8][3].ToString();
-                            string crVersion = dtExcelFileRecords.Rows[10][3].ToString();
-                            string device = dtExcelFileRecords.Rows[17][3].ToString();
-                            string os = dtExcelFileRecords.Rows[18][3].ToString();
-                            string locale = dtExcelFileRecords.Rows[19][3].ToString();
-                            string browser = dtExcelFileRecords.Rows[20][3].ToString();
-                            string score = dtExcelFileRecords.Rows[37][2].ToString();
-                       
-                        string link = ("http://readium.github.io/test-results/cloudreader/spreadsheets/" + fName).ToString();
-
-                        string[] row = new string[] { tester, date, crVersion, device, os, locale, browser, score, link };
-                        dtExcelRecords.Rows.Add(row);
-                        }
-                        else
+                        if (dtExcelFileRecords.Rows[15][3].ToString() == "")
                         {
                             string tester = dtExcelFileRecords.Rows[5][3].ToString();
                             string date = dtExcelFileRecords.Rows[8][3].ToString();
@@ -105,6 +89,22 @@ namespace TestResultsWeb2
                             string locale = dtExcelFileRecords.Rows[19][3].ToString();
                             string browser = dtExcelFileRecords.Rows[20][3].ToString();
                             string score = dtExcelFileRecords.Rows[37][2].ToString();
+
+                            string link = ("http://readium.github.io/test-results/cloudreader/spreadsheets/" + fName).ToString();
+
+                            string[] row = new string[] { tester, date, crVersion, device, os, locale, browser, score, link };
+                            dtExcelRecords.Rows.Add(row);
+                        }
+                        else
+                        {
+                            string tester = dtExcelFileRecords.Rows[5][3].ToString();
+                            string date = dtExcelFileRecords.Rows[8][3].ToString();
+                            string crVersion = dtExcelFileRecords.Rows[10][3].ToString();
+                            string device = dtExcelFileRecords.Rows[17][3].ToString();
+                            string os = dtExcelFileRecords.Rows[19][3].ToString();
+                            string locale = dtExcelFileRecords.Rows[20][3].ToString();
+                            string browser = dtExcelFileRecords.Rows[21][3].ToString();
+                            string score = dtExcelFileRecords.Rows[38][2].ToString();
 
                             string link = ("http://readium.github.io/test-results/cloudreader/spreadsheets/" + fName).ToString();
 
