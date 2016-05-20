@@ -24,7 +24,7 @@ namespace TestResultsWeb2
             string getExcelSheetName = "";
             //get array of files from Github repo folder         
             //string[] files = Directory.GetFiles(@"C:\Users\walkd\Documents\GitHub\ReadiumTestResults_v4.0\TestResultsWeb2\App_Data");
-            string[] files = Directory.GetFiles(@"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data");
+            string[] files = Directory.GetFiles(@"H:\Readium\Readium-test-files\test-results\cloudreader\spreadsheets\test-results\cloudreader\spreadsheets");
             if (files.Length == 0)
             {
                 Response.Write("no files in folder");
@@ -48,9 +48,9 @@ namespace TestResultsWeb2
                 foreach (string fileName in files)
                 {
                     //  set file extension, fileName and fileLocation
-                    string fileExtension = Path.GetExtension(@"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data" + fileName);
+                    string fileExtension = Path.GetExtension(@"H:\Readium\Readium-test-files\test-results\cloudreader\spreadsheets\test-results\cloudreader\spreadsheets" + fileName);
                     string fName = Path.GetFileName(fileName);
-                    string fileLocation = @"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data" + fileName;
+                    string fileLocation = @"H:\Readium\Readium-test-files\test-results\cloudreader\spreadsheets\test-results\cloudreader\spreadsheets" + fileName;
 
                     if (fileExtension == ".xls")
                     {
@@ -69,7 +69,7 @@ namespace TestResultsWeb2
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection = con;
                     OleDbDataAdapter dAdapter = new OleDbDataAdapter(cmd);
-                   
+
                     try
                     {
                         con.Open();
@@ -160,7 +160,7 @@ namespace TestResultsWeb2
         //        }
         //        else System.Windows.Forms.MessageBox.Show("No Excel file was selected.");
         //    }
-            
+
         //}
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
