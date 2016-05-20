@@ -17,11 +17,14 @@ namespace TestResultsWeb2
     {
         public void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+                GridView1.DataBind();
+
             string connectionString = "";
             string getExcelSheetName = "";
             //get array of files from Github repo folder         
-            //string[] files = Directory.GetFiles(@"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data");
-            string[] files = Directory.GetFiles(@"C:\Users\walkd\Documents\GitHub\ReadiumTestResults_v4.0\TestResultsWeb2\App_Data");
+            //string[] files = Directory.GetFiles(@"C:\Users\walkd\Documents\GitHub\ReadiumTestResults_v4.0\TestResultsWeb2\App_Data");
+            string[] files = Directory.GetFiles(@"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data");
             if (files.Length == 0)
             {
                 Response.Write("no files in folder");
@@ -45,9 +48,9 @@ namespace TestResultsWeb2
                 foreach (string fileName in files)
                 {
                     //  set file extension, fileName and fileLocation
-                    string fileExtension = Path.GetExtension(@"C:\Users\walkd\Documents\GitHub\ReadiumTestResults_v4.0\TestResultsWeb2\App_Data" + fileName);
+                    string fileExtension = Path.GetExtension(@"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data" + fileName);
                     string fName = Path.GetFileName(fileName);
-                    string fileLocation = @"C:\Users\walkd\Documents\GitHub\ReadiumTestResults_v4.0\TestResultsWeb2\App_Data" + fileName;
+                    string fileLocation = @"C:\Users\Duan\Documents\ReadiumTestResultsv4.0\TestResultsWeb2\App_Data" + fileName;
 
                     if (fileExtension == ".xls")
                     {
@@ -159,6 +162,10 @@ namespace TestResultsWeb2
         //    }
             
         //}
-
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex; //change page index
+            GridView1.DataBind();  // get the data source and bind it again
+        }
     }
 }
