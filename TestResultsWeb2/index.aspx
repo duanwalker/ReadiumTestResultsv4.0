@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="TestResultsWeb2.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="TestResultsWeb2.WebForm2" %>
 
 <!DOCTYPE html>
 
@@ -34,7 +34,7 @@ link to download the Excel spreadsheet.
             Width="92px" OnClick="btnUpload_Click" />--%>
         <br/>
         <hr />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Tester" HeaderText="Tester" />
